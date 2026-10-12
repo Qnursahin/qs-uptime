@@ -13,7 +13,7 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: |
           fail=""
-          for u in "https://www.qslater.com/" "https://www.qslater.com/api/saglik-yok" "https://www.qslater.com/api/health?deep=1"; do
+          for u in "https://www.qslater.com/" "https://www.qslater.com/api/health" "https://www.qslater.com/api/health?deep=1"; do
             code=$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$u" || echo 000)
             [ "$code" = "200" ] || fail="$fail\n$u -> $code"
           done
